@@ -25,8 +25,13 @@ class GuestBook
     public function getMessages() 
     {
             $content = trim(file_get_contents($this->file)); 
-            var_dump($content);
-    }
+            $lines = explode(PHP_EOL, $content);
+            $messages = [];
 
-    
+            foreach ($lines as $lines) {
+                $messages[] = Message::FromJson($lines);
+            }
+
+            return array_reverse($messages);
+    }
 }

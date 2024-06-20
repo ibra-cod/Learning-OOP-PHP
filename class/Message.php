@@ -16,6 +16,12 @@ class message
             $this->date = $dateTime ?: new DateTime();
     }
 
+    public static function FromJson ($json) 
+    {
+        $data = json_decode($json,true );
+        return new self($data['username'], $data['message'], new DateTime("@" . $data['date']));
+    }
+
     public function isValid() : bool 
     {
         return empty($this->getErrors());
@@ -41,5 +47,18 @@ class message
             'message' => $this->message,
             'date' => $this->date->getTimestamp()
            ]);
+    }
+
+    public function toHTML() : string 
+    {
+        $username = htmlentities($this->username);
+        $this->date->setTimezone(New DateTimeZone('Europe/Paris'));
+        $date = $this->date->format('d/m/y à H:i');
+        $message = htmlentities($this->message);
+        return <<<HTML
+        <strong>User : {$username}</strong> <em> Date : {$date}</em> <br>
+        Message : {$message} <br>
+HTML;
+        
     }
 }

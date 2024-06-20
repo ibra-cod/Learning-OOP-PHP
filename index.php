@@ -8,17 +8,16 @@ require_once 'class/GuestBook.php';
     $guestbook = new GuestBook(__DIR__ . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'message');
 
     if (isset($_POST['username'], $_POST['message'])) {
-       $message = new Message($_POST['username'], $_POST['message']);
-       if ($message->isValid()) {
-            $guestbook->addMessage($message);
+       $messages = new Message($_POST['username'], $_POST['message']);
+       if ($messages->isValid()) {
+            $guestbook->addMessage($messages);
             $success = true; 
             $_POST = [];
        } else {
-        $errors  = $message->getErrors();
+        $errors  = $messages->getErrors();
        }
     } 
-
-    $message = $guestbook->getMessages();
+    $messages = $guestbook->getMessages();
 
 ?>
 
@@ -59,6 +58,18 @@ require_once 'class/GuestBook.php';
             </div>
 
         </form>
+        
+
+       
+
+      <?php if(!empty($messages)) :  ?>
+        <h1 class="mt-4">Your Messages</h1>
+        <?php foreach ($messages as $message) : ?>
+                <?php echo $message->toHTML(); ?>
+        <?php endforeach ; ?>
+   
+      <?php endif  ?>
+
     </div>
 
 
