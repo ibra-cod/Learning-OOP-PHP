@@ -1,14 +1,9 @@
 {
-    "_readme": [
-        "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
-        "This file is @generated automatically"
-    ],
-    "content-hash": "2f3a6e455e18ae342747364efb36551b",
     "packages": [
         {
             "name": "altorouter/altorouter",
             "version": "2.0.2",
+            "version_normalized": "2.0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dannyvankooten/AltoRouter.git",
@@ -28,7 +23,9 @@
                 "phpunit/phpunit": "5.7.*",
                 "squizlabs/php_codesniffer": "3.4.2"
             },
+            "time": "2020-03-09T08:34:59+00:00",
             "type": "library",
+            "installation-source": "dist",
             "autoload": {
                 "classmap": [
                     "AltoRouter.php"
@@ -64,13 +61,12 @@
                 "issues": "https://github.com/dannyvankooten/AltoRouter/issues",
                 "source": "https://github.com/dannyvankooten/AltoRouter/tree/2.0.2"
             },
-            "time": "2020-03-09T08:34:59+00:00"
-        }
-    ],
-    "packages-dev": [
+            "install-path": "../altorouter/altorouter"
+        },
         {
             "name": "symfony/polyfill-mbstring",
             "version": "v1.30.0",
+            "version_normalized": "1.30.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
@@ -91,6 +87,7 @@
             "suggest": {
                 "ext-mbstring": "For best performance"
             },
+            "time": "2024-06-19T12:30:46+00:00",
             "type": "library",
             "extra": {
                 "thanks": {
@@ -98,6 +95,7 @@
                     "url": "https://github.com/symfony/polyfill"
                 }
             },
+            "installation-source": "dist",
             "autoload": {
                 "files": [
                     "bootstrap.php"
@@ -146,11 +144,12 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-06-19T12:30:46+00:00"
+            "install-path": "../symfony/polyfill-mbstring"
         },
         {
             "name": "symfony/var-dumper",
             "version": "v7.1.1",
+            "version_normalized": "7.1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
@@ -177,10 +176,12 @@
                 "symfony/uid": "^6.4|^7.0",
                 "twig/twig": "^3.0.4"
             },
+            "time": "2024-05-31T14:57:53+00:00",
             "bin": [
                 "Resources/bin/var-dump-server"
             ],
             "type": "library",
+            "installation-source": "dist",
             "autoload": {
                 "files": [
                     "Resources/functions/dump.php"
@@ -229,15 +230,12 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-05-31T14:57:53+00:00"
+            "install-path": "../symfony/var-dumper"
         }
     ],
-    "aliases": [],
-    "minimum-stability": "stable",
-    "stability-flags": [],
-    "prefer-stable": false,
-    "prefer-lowest": false,
-    "platform": [],
-    "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "dev": true,
+    "dev-package-names": [
+        "symfony/polyfill-mbstring",
+        "symfony/var-dumper"
+    ]
 }
