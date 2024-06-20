@@ -1,4 +1,8 @@
 <?php 
+namespace App\GuestBook;
+
+use \DateTime;
+use \DateTimeZone;
 
 class message 
 {
@@ -54,7 +58,7 @@ class message
         $username = htmlentities($this->username);
         $this->date->setTimezone(New DateTimeZone('Europe/Paris'));
         $date = $this->date->format('d/m/y à H:i');
-        $message = htmlentities($this->message);
+        $message = nl2br(htmlentities($this->message));
         return <<<HTML
         <strong>User : {$username}</strong> <em> Date : {$date}</em> <br>
         Message : {$message} <br>

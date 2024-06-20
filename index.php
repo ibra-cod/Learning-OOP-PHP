@@ -1,6 +1,12 @@
-<?php 
-require_once 'class/Message.php';
-require_once 'class/GuestBook.php';
+<?php
+
+require_once './vendor/autoload.php';
+
+use App\GuestBook\{
+    GuestBook,
+    Message
+};
+
     $errors = null;
     $success = false;
     $title = 'Livre d\'or';
@@ -8,7 +14,7 @@ require_once 'class/GuestBook.php';
     $guestbook = new GuestBook(__DIR__ . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'message');
 
     if (isset($_POST['username'], $_POST['message'])) {
-       $messages = new Message($_POST['username'], $_POST['message']);
+       $messages = new message($_POST['username'], $_POST['message']);
        if ($messages->isValid()) {
             $guestbook->addMessage($messages);
             $success = true; 
